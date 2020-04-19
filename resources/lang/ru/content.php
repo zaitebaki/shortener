@@ -11,5 +11,9 @@ return [
             'shortLinkCaption' => 'Короткая ссылка',
             'statisticLinkCaption' => 'Ссылка на статистику переходов',
         ],
+        'errors' =>
+        [
+            'invalidUrl' => 'Сервис не поддерживает указанный тип URL'
+        ]
     ],
 ];

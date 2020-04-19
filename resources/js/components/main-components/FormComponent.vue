@@ -25,6 +25,11 @@
                 rows="3"
                 :value="data.userLink"
                 required/>
+            
+                      <small
+              v-if="data.error"
+              class="form-text text-danger"
+            >{{ data.error }}</small>
             </div>
                       <button
             type="submit"
@@ -32,6 +37,7 @@
           >
             {{ content.buttonCaption }}
           </button>
+
           
           <div class="form-group py-5">
             <label for="exampleInputEmail1">{{ content.shortLinkCaption }}</label>
@@ -53,12 +59,6 @@
               value="http://poker.devmasta.ru.com/ghR45"
             >
           </div>
-
-          <!-- <small
-              v-if="propsData.error"
-              id="emailHelp"
-              class="form-text text-danger"
-            >{{ propsData.error }}</small> -->
         </form>
       </div>
     </div>

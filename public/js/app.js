@@ -37721,7 +37721,13 @@ var render = function() {
                   required: ""
                 },
                 domProps: { value: _vm.data.userLink }
-              })
+              }),
+              _vm._v(" "),
+              _vm.data.error
+                ? _c("small", { staticClass: "form-text text-danger" }, [
+                    _vm._v(_vm._s(_vm.data.error))
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c(

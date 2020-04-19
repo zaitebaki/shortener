@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\UrlHandler;
 use Illuminate\Http\Request;
 
 class IndexController extends SuperController
@@ -30,6 +31,10 @@ class IndexController extends SuperController
             $this->propsData['shortLink'] = session()->get('shortLink');
         }
 
+        if (session()->has('err')) {
+            $this->propsData['err'] = session()->get('err');
+        }
+
         return $this->renderOutput();
     }
 
@@ -38,14 +43,15 @@ class IndexController extends SuperController
         $data = $request->all();
 
         $userLink = $data['userUrl'];
-        $shortLink = 'short link';
+        $shortLink = '';
 
-        // $res = filter_var($userLink, FILTER_VALIDATE_URL);
-
-        if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $userLink)) {
-            dd('error');
+        // проверить url на валидность
+        if (UrlHandler::isValid($userLink)) {
+            $token = UrlHandler::getShortToken($userLink);
+            $shortLink = env('APP_URL') . $token;
         } else {
-            dd("good");
+            session(['err' => __('content.errors.mainPage.invalidUrl')]);
+            $this->propsData['error'] = __('content.mainPage.errors.invalidUrl');
         }
 
         session(['userLink' => $userLink]);
