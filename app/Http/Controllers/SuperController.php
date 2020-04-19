@@ -17,16 +17,16 @@ class SuperController extends Controller
     protected $title;
 
     /**
+     * Данные для компонента.
+     * @var array
+     */
+    protected $propsData = [];
+
+    /**
      * Массив переменных, которые передаются в шаблон.
      * @var array
      */
     protected $vars;
-
-    /**
-     * Контент отображаемого вида.
-     * @var string
-     */
-    protected $content = '';
 
     public function __construct()
     {
@@ -34,16 +34,15 @@ class SuperController extends Controller
 
     /**
      * Сгенерировать вид
-     * @return type
+     * @return Illuminate\View\View
      */
-    protected function renderOutput()
+    protected function renderOutput(): object
     {
 
         $this->vars = array_add($this->vars, 'title', $this->title);
 
-        // передать в шаблон контентной части
-        if ($this->content !== '') {
-            $this->vars = array_add($this->vars, 'content', $this->content);
+        if (count($this->propsData) !== 0) {
+            $this->vars = array_add($this->vars, 'propsData', $this->propsData);
         }
 
         return view($this->layout)->with($this->vars);
