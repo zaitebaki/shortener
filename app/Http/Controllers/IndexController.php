@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\UrlHandler;
 use Hashids\Hashids;
 use Illuminate\Http\Request;
 
