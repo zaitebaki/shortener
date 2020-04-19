@@ -2,9 +2,10 @@
 
 namespace App\Helpers;
 
+use Hashids\Hashids;
+
 class UrlHandler
 {
-
     public static function isValid(string $url)
     {
         if (preg_match(
@@ -18,13 +19,35 @@ class UrlHandler
     }
 
     /**
-     * Получить токен для url
-     * @param string $url
-     * 
-     * @return string
+     * Получить токен для URL.
+     *  @param string $url
+     *  @return string
      */
     public static function getShortToken(string $url): string
     {
-        return '00001';
+        $currentToken = config('data.currentToken');
+
+        $smbArrays = require_once 'token-array.php';
+
+        $countZ = 0;
+        for ($i = 4; $i > 0; $i--) {
+            if ($currentToken === 'Z') {
+                $countZ++;
+            } else {
+                break;
+            }
+        }
+
+        for ($i = 0, $j = 4; $i < $countZ; $i++, $j--) {
+            $currentToken[$j] = $smbArrays['smbOrder'][0];
+        }
+
+        $incrementSmb = $currentToken[4 - $countZ];
+        $newOrderNumber = $smbArrays['smbValuesArray'][$incrementSmb];
+        $currentToken[4 - $countZ] = $smbArrays['smbOrder'][$newOrderNumber];
+
+        config(['data.currentToken' => $currentToken]);
+
+        return $currentToken;
     }
 }
