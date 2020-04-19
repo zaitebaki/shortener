@@ -1,0 +1,2 @@
+<main-component>
+</main-component>
