@@ -1990,6 +1990,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2028,9 +2029,7 @@ __webpack_require__.r(__webpack_exports__);
       return today;
     }
   },
-  mounted: function mounted() {
-    console.log(this.getCurrentDate);
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -2069,9 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  mounted: function mounted() {
-    console.log(this.propsData);
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -37791,6 +37788,7 @@ var render = function() {
                   attrs: {
                     value: _vm.vmodelDate,
                     "disabled-dates": _vm.disabledFn,
+                    name: "dataPicker",
                     placeholder: " указать дату"
                   }
                 })
@@ -37799,28 +37797,28 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+              _c("label", { attrs: { for: "shortLink" } }, [
                 _vm._v(_vm._s(_vm.content.shortLinkCaption))
               ]),
               _vm._v(" "),
               _c("input", {
                 staticClass: "form-control",
-                attrs: { id: "inputLogin", type: "text", name: "email" },
+                attrs: { id: "shortLink", type: "text", name: "shortLink" },
                 domProps: { value: _vm.data.shortLink }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+              _c("label", { attrs: { for: "statisticLink" } }, [
                 _vm._v(_vm._s(_vm.content.statisticLinkCaption))
               ]),
               _vm._v(" "),
               _c("input", {
                 staticClass: "form-control",
                 attrs: {
-                  id: "inputLogin",
+                  id: "statisticLink",
                   type: "text",
-                  name: "email",
+                  name: "statisticLink",
                   value: "http://poker.devmasta.ru.com/ghR45"
                 }
               })

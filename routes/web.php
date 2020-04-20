@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'IndexController@index')->name('indexPage');
-Route::post('/get-short-link', 'IndexController@getShortLink')->name('getShortLink');
+Route::post('/', 'IndexController@getShortLink')->name('getShortLink');
+Route::get('/{token}', 'IndexController@redirect')->name('redirect');

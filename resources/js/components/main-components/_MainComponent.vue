@@ -25,7 +25,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.propsData);
   },
 };
 </script>

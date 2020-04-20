@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\UrlHandler;
+use App\Url;
 use Illuminate\Http\Request;
+use Redirect;
 
 class IndexController extends SuperController
 {
-
     /**
      * Инициализация контроллера IndexController.
      */
@@ -49,15 +50,17 @@ class IndexController extends SuperController
     public function getShortLink(Request $request): object
     {
         $data = $request->all();
-
         $userLink = $data['userUrl'];
+        $date = $data['dataPicker'];
+
+        $date = date('Y-m-d', (strtotime($date)));
         $shortLink = '';
 
         // проверить url на валидность
         if (UrlHandler::isValid($userLink)) {
             $token = UrlHandler::getNewToken();
-            
-            UrlHandler::saveUrl($userLink, $token);
+
+            UrlHandler::saveUrl($userLink, $token, $date);
 
             $shortLink = env('APP_URL') . $token;
         } else {
@@ -72,5 +75,27 @@ class IndexController extends SuperController
         $this->propsData['shortLink'] = $shortLink;
 
         return $this->renderOutput();
+    }
+
+    /**
+     * Получить короткую ссылку.
+     * @param Illuminate\Http\Request $request
+     * @return Illuminate\View\View
+     */
+    public function redirect($token)
+    {
+        if (strlen($token) === 5) {
+            $model = Url::where('token', '=', $token)->firstOrFail();
+
+            $date = strtotime($model->lifetime) + 86400;
+
+            if ($date !== 0 && $date < time()) {
+                abort(404);
+            }
+
+            return Redirect::away($model->url);
+        }
+
+        abort('404');
     }
 }

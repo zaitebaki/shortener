@@ -46,30 +46,31 @@
             <datepicker
               :value="vmodelDate"
               :disabled-dates="disabledFn"
+              name="dataPicker"
               placeholder=" указать дату"
             />
           </div>
-           <div class="form-group">
-            <label for="exampleInputEmail1">{{
+          <div class="form-group">
+            <label for="shortLink">{{
               content.shortLinkCaption
             }}</label>
             <input
-              id="inputLogin"
+              id="shortLink"
               type="text"
               class="form-control"
-              name="email"
+              name="shortLink"
               :value="data.shortLink"
             >
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">{{
+            <label for="statisticLink">{{
               content.statisticLinkCaption
             }}</label>
             <input
-              id="inputLogin"
+              id="statisticLink"
               type="text"
               class="form-control"
-              name="email"
+              name="statisticLink"
               value="http://poker.devmasta.ru.com/ghR45"
             >
           </div>
@@ -121,7 +122,6 @@ export default {
         },
     },
     mounted() {
-        console.log(this.getCurrentDate);
     },
 };
 </script>

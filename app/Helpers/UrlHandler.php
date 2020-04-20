@@ -39,14 +39,17 @@ class UrlHandler
      * Получить новый токен.
      * @param string $url
      * @param string $token
+     * @param string $date
      *
      * @return void
      */
-    public static function saveUrl($url, $token): void
+    public static function saveUrl($url, $token, $date): void
     {
+
         $newUrl = [
             'url' => $url,
             'token' => $token,
+            'lifetime' => $date,
         ];
 
         $newUrl = new Url($newUrl);
