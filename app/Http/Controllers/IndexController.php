@@ -56,6 +56,9 @@ class IndexController extends SuperController
         // проверить url на валидность
         if (UrlHandler::isValid($userLink)) {
             $token = UrlHandler::getNewToken();
+            
+            UrlHandler::saveUrl($userLink, $token);
+
             $shortLink = env('APP_URL') . $token;
         } else {
             session(['err' => __('content.errors.mainPage.invalidUrl')]);

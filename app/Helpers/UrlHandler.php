@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Url;
 use Hashids\Hashids;
 
 class UrlHandler
@@ -32,5 +33,23 @@ class UrlHandler
         $hashids = new Hashids($milliseconds, 5);
 
         return $hashids->encode(1);
+    }
+
+    /**
+     * Получить новый токен.
+     * @param string $url
+     * @param string $token
+     *
+     * @return void
+     */
+    public static function saveUrl($url, $token): void
+    {
+        $newUrl = [
+            'url' => $url,
+            'token' => $token,
+        ];
+
+        $newUrl = new Url($newUrl);
+        $newUrl->save();
     }
 }
