@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Hashids\Hashids;
+use App\Helpers\UrlHandler;
 use Illuminate\Http\Request;
 
 class IndexController extends SuperController
@@ -19,10 +19,6 @@ class IndexController extends SuperController
 
     public function index()
     {
-        // if (!session()->has('typeForm')) {
-        //     session(['typeForm' => 'login']);
-        // }
-
         if (session()->has('userLink')) {
             $this->propsData['userLink'] = session()->get('userLink');
         }
@@ -47,14 +43,8 @@ class IndexController extends SuperController
 
         // проверить url на валидность
         if (UrlHandler::isValid($userLink)) {
-            $token = UrlHandler::getShortToken($userLink);
-
-            $milliseconds = (int) round(microtime(true) * 1000);
-
-            $d = $userLink . $milliseconds;
-            $hashids = new Hashids($userLink . $milliseconds, 5);
-
-            $shortLink = env('APP_URL') . $hashids->encode(1);
+            $token = UrlHandler::getNewToken();
+            $shortLink = env('APP_URL') . $token;
         } else {
             session(['err' => __('content.errors.mainPage.invalidUrl')]);
             $this->propsData['error'] = __('content.mainPage.errors.invalidUrl');
