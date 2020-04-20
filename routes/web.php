@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', 'IndexController@index')->name('indexPage');
+Route::post('/handle-form', 'IndexController@handleRequest')->name('handleLinkForm');
