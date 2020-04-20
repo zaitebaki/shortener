@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-   <form-component
-    :content="contentData.mainForm"
-    :data="propsData"
-   ></form-component>
+    <form-component
+      :content="contentData.mainForm"
+      :data="propsData"
+    />
   </div>
 </template>
 

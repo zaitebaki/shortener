@@ -10,6 +10,7 @@ return [
             'buttonCaption' => 'Сократить ссылку',
             'shortLinkCaption' => 'Короткая ссылка',
             'statisticLinkCaption' => 'Ссылка на статистику переходов',
+            'datePickerCaption' => 'Срок хранения ссылки'
         ],
         'errors' =>
         [
