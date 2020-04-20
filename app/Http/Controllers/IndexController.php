@@ -8,16 +8,24 @@ use Illuminate\Http\Request;
 class IndexController extends SuperController
 {
 
+    /**
+     * Инициализация контроллера IndexController.
+     */
     public function __construct()
     {
         $this->title = __('content.mainPage.title');
         $this->layout = "index";
         $this->propsData = [
-            'indexRoute' => route('handleLinkForm'),
+            'indexRoute' => route('getShortLink'),
         ];
     }
 
-    public function index()
+    /**
+     * Обработать GET-запрос для роутера '/'.
+     * @return void
+     * @return Illuminate\View\View
+     */
+    public function index(): object
     {
         if (session()->has('userLink')) {
             $this->propsData['userLink'] = session()->get('userLink');
@@ -30,11 +38,15 @@ class IndexController extends SuperController
         if (session()->has('err')) {
             $this->propsData['err'] = session()->get('err');
         }
-
         return $this->renderOutput();
     }
 
-    public function handleRequest(Request $request)
+    /**
+     * Получить короткую ссылку.
+     * @param Illuminate\Http\Request $request
+     * @return Illuminate\View\View
+     */
+    public function getShortLink(Request $request): object
     {
         $data = $request->all();
 

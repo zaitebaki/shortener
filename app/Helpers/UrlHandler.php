@@ -6,6 +6,11 @@ use Hashids\Hashids;
 
 class UrlHandler
 {
+    /**
+     * Валидация URL.
+     * @param string $url
+     * @return bool
+     */
     public static function isValid(string $url)
     {
         if (preg_match(
@@ -17,6 +22,10 @@ class UrlHandler
         return false;
     }
 
+    /**
+     * Получить новый токен.
+     * @return string
+     */
     public static function getNewToken(): string
     {
         $milliseconds = (int) round(microtime(true) * 1000);
