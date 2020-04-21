@@ -76,14 +76,13 @@ class IndexController extends SuperController
             UrlHandler::saveUrl($userLink, $token, $date);
             $shortLink = env('APP_URL') . $token;
             $statisticLink = env('APP_URL') . $token . "/statistic";
-
-            session()->flash('userLink', $userLink);
             session()->flash('shortLink', $shortLink);
             session()->flash('statisticLink', $statisticLink);
         } else {
             $errorMessage = __('content.mainPage.errors.invalidUrl');
             session()->flash('err', $errorMessage);
         }
+        session()->flash('userLink', $userLink);
         return redirect('/');
     }
 
