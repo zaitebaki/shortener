@@ -4,7 +4,10 @@ namespace App\Helpers;
 
 class GeoManager
 {
-
+    /**
+     * Получить страну и город по IP.
+     * @return array
+     */
     public static function getCountryAndCity()
     {
         $ip = '';
@@ -24,7 +27,6 @@ class GeoManager
             $ip = $_SERVER['REMOTE_ADDR'];
         }
 
-        $ip = "176.59.74.235";
         $ipData = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
 
         $result = array(null, null);

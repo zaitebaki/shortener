@@ -10,28 +10,22 @@ return [
             'buttonCaption' => 'Сократить ссылку',
             'shortLinkCaption' => 'Короткая ссылка',
             'statisticLinkCaption' => 'Ссылка на статистику переходов',
-            'datePickerCaption' => 'Срок хранения ссылки'
+            'datePickerCaption' => 'Срок хранения ссылки',
+            'newButtonCaption' => 'Создать новую ссылку',
         ],
         'errors' =>
         [
-            'invalidUrl' => 'Сервис не поддерживает указанный тип URL'
-        ]
+            'invalidUrl' => 'Сервис не поддерживает указанный тип URL',
+        ],
     ],
 
     'statisticPage' => [
         'title' => 'Статистика переходов по ссылке',
-        // 'mainForm' =>
-        // [
-        //     'pageCaption' => 'Сервис сокращения URL-ссылок',
-        //     'inputUrlCaption' => 'Введите свой url ниже:',
-        //     'buttonCaption' => 'Сократить ссылку',
-        //     'shortLinkCaption' => 'Короткая ссылка',
-        //     'statisticLinkCaption' => 'Ссылка на статистику переходов',
-        //     'datePickerCaption' => 'Срок хранения ссылки'
-        // ],
-        // 'errors' =>
-        // [
-        //     'invalidUrl' => 'Сервис не поддерживает указанный тип URL'
-        // ]
+        'h3Caption' => 'Статистика переходов для ссылки:',
+        'noDataCaption' => 'Данные по переходам отсутствуют',
+        'dateCaption' => 'Дата и время',
+        'countryCaption' => 'Страна',
+        'cityCaption' => 'Город',
+        'userAgentCaption' => 'Версия браузера и ОС'
     ],
 ];

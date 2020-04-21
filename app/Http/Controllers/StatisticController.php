@@ -36,8 +36,24 @@ class StatisticController extends SuperController
             abort(404);
         }
 
-        // $this->propsData
+        $linkModels = $urlModel->statistic()->get();
 
+        if ($linkModels->isEmpty()) {
+            $this->propsData['links'] = null;
+        } else {
+            $links = [];
+            $i = 0;
+            foreach ($linkModels as $link) {
+                $links[$i]['date'] = $link->date_time;
+                $links[$i]['country'] = $link->country;
+                $links[$i]['city'] = $link->city;
+                $links[$i]['userAgent'] = $link->user_agent;
+                $i++;
+            }
+            $this->propsData['links'] = $links;
+        }
+
+        $this->propsData['currentLink'] = env('APP_URL') . $token;
         return $this->renderOutput();
     }
 }

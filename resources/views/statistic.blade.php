@@ -12,10 +12,10 @@
 
 <body>
   <div id="app">
-    <main-component
+    <statistic-component
         :content-data="{{ json_encode(__('content.statisticPage'), JSON_UNESCAPED_UNICODE) }}"
         :props-data="{{ json_encode($propsData, JSON_UNESCAPED_UNICODE) }}">
-    </main-component>
+    </statistic-component>
   </div>
 </body>
 </html>

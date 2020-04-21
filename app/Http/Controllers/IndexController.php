@@ -29,17 +29,8 @@ class IndexController extends SuperController
      */
     public function index(): object
     {
-        if (session()->has('userLink')) {
-            $this->propsData['userLink'] = session()->get('userLink');
-        }
-
-        if (session()->has('shortLink')) {
-            $this->propsData['shortLink'] = session()->get('shortLink');
-        }
-
-        if (session()->has('err')) {
-            $this->propsData['err'] = session()->get('err');
-        }
+        $this->propsData['shortLink'] = null;
+        $this->propsData['error'] = null;
         return $this->renderOutput();
     }
 
@@ -51,6 +42,11 @@ class IndexController extends SuperController
     public function getShortLink(Request $request): object
     {
         $data = $request->all();
+
+        if (isset($data['newLink'])) {
+            return redirect('/');
+        }
+
         $userLink = $data['userUrl'];
         $date = strtotime($data['dataPicker']);
 
@@ -64,14 +60,15 @@ class IndexController extends SuperController
             UrlHandler::saveUrl($userLink, $token, $date);
             $shortLink = env('APP_URL') . $token;
             $statisticLink = env('APP_URL') . $token . "/statistic";
+            $this->propsData['error'] = null;
         } else {
             session(['err' => __('content.errors.mainPage.invalidUrl')]);
             $this->propsData['error'] = __('content.mainPage.errors.invalidUrl');
         }
 
-        session(['userLink' => $userLink]);
-        session(['shortLink' => $shortLink]);
-        session(['statisticLink' => $statisticLink]);
+        session(['userLink', $userLink]);
+        session(['shortLink', $shortLink]);
+        session(['statisticLink', $statisticLink]);
 
         $this->propsData['userLink'] = $userLink;
         $this->propsData['shortLink'] = $shortLink;
@@ -91,7 +88,6 @@ class IndexController extends SuperController
         }
 
         $urlModel = Url::where('token', '=', $token)->firstOrFail();
-
         $isActive = UrlHandler::isActive($urlModel->lifetime);
 
         if (!$isActive) {
@@ -99,7 +95,6 @@ class IndexController extends SuperController
         }
 
         $date = date("Y-m-d H:i:s");
-
         list($country, $city) = GeoManager::getCountryAndCity();
         UrlHandler::saveStatistic($urlModel, $date, $country, $city);
 

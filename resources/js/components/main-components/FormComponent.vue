@@ -16,7 +16,52 @@
             name="_token"
             :value="csrf"
           >
-          <div class="form-group">
+          <input
+            type="hidden"
+            name="newLink"
+            :value="data.shortLink"
+          >
+          <div
+            v-if="data.shortLink"
+            class="form-group"
+          >
+            <label
+              class="text-success"
+              for="shortLink"
+            >{{
+              content.shortLinkCaption
+            }}</label>
+            <input
+              id="shortLink"
+              type="text"
+              class="form-control"
+              name="shortLink"
+              :value="data.shortLink"
+              readonly
+            >
+          </div>
+          <div
+            v-if="data.statisticLink"
+            class="form-group"
+          >
+            <label
+              class="text-success"
+              for="statisticLink"
+            >{{
+              content.statisticLinkCaption
+            }}</label>
+            <input
+              id="statisticLink"
+              type="text"
+              class="form-control"
+              name="statisticLink"
+              :value="data.statisticLink"
+              readonly
+            >
+          </div>
+          <div
+            class="form-group"
+          >
             <label for="urlInputTextarea">{{
               content.inputUrlCaption
             }}</label>
@@ -34,12 +79,24 @@
             >{{ data.error }}</small>
           </div>
           <button
+            v-if="data.shortLink === null || data.error !== null"
             type="submit"
             class="btn btn-primary"
           >
             {{ content.buttonCaption }}
           </button>
-          <div class="form-group py-4">
+          <button
+            v-if="data.shortLink !== null && data.error === null"
+            type="submit"
+            class="btn btn-primary"
+          >
+            {{ content.newButtonCaption }}
+          </button>
+
+          <div
+            v-if="data.shortLink === null || data.error !== null"
+            class="form-group py-4"
+          >
             <label for="datePicker">{{
               content.datePickerCaption
             }}</label>
@@ -49,30 +106,6 @@
               name="dataPicker"
               placeholder=" указать дату"
             />
-          </div>
-          <div class="form-group">
-            <label for="shortLink">{{
-              content.shortLinkCaption
-            }}</label>
-            <input
-              id="shortLink"
-              type="text"
-              class="form-control"
-              name="shortLink"
-              :value="data.shortLink"
-            >
-          </div>
-          <div class="form-group">
-            <label for="statisticLink">{{
-              content.statisticLinkCaption
-            }}</label>
-            <input
-              id="statisticLink"
-              type="text"
-              class="form-control"
-              name="statisticLink"
-              :value="data.statisticLink"
-            >
           </div>
         </form>
       </div>
@@ -103,13 +136,13 @@ export default {
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute('content'),
             disabledFn: {
-                // customPredictor(date) {
-                //     const today = new Date();
-                //     today.setHours(0, 0, 0, 0);
-                //     if (date < today) {
-                //         return true;
-                //     }
-                // },
+                customPredictor(date) {
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    if (date < today) {
+                        return true;
+                    }
+                },
             },
             vmodelDate: null
         };
