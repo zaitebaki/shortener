@@ -60,8 +60,17 @@
             >
           </div>
           <div class="form-group">
-            <label for="urlInputTextarea">{{
+            <label
+              v-if="data.shortLink === null || data.error !== null"
+              for="urlInputTextarea"
+            >{{
               content.inputUrlCaption
+            }}</label>
+            <label
+              v-if="data.shortLink !== null && data.error === null"
+              for="urlInputTextarea"
+            >{{
+              content.yourUrlCaption
             }}</label>
             <textarea
               id="urlInputTextarea"
@@ -70,6 +79,7 @@
               rows="3"
               :value="data.userLink"
               required
+              :readonly="data.shortLink != null"
             />
             <small
               v-if="data.error"
