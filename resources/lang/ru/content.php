@@ -7,6 +7,7 @@ return [
         [
             'pageCaption' => 'Сервис сокращения URL-ссылок',
             'inputUrlCaption' => 'Введите свой url ниже:',
+            'yourUrlCaption' => 'Исходная ссылка:',
             'buttonCaption' => 'Сократить ссылку',
             'shortLinkCaption' => 'Короткая ссылка',
             'statisticLinkCaption' => 'Ссылка на статистику переходов',
@@ -23,7 +24,7 @@ return [
         'title' => 'Статистика переходов по ссылке',
         'h3Caption' => 'Статистика переходов для ссылки:',
         'noDataCaption' => 'Данные по переходам отсутствуют',
-        'dateCaption' => 'Дата и время',
+        'dateCaption' => 'Дата и время (Гринвич)',
         'countryCaption' => 'Страна',
         'cityCaption' => 'Город',
         'userAgentCaption' => 'Версия браузера и ОС'
