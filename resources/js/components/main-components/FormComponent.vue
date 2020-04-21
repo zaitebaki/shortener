@@ -79,7 +79,7 @@
               rows="3"
               :value="data.userLink"
               required
-              :readonly="data.shortLink != null"
+              :readonly="data.shortLink !== null && data.error === null"
             />
             <small
               v-if="data.error"
@@ -162,6 +162,6 @@ export default {
             return today;
         },
     },
-    mounted() {},
+    mounted() {console.log(this.data.error)},
 };
 </script>

@@ -2070,7 +2070,9 @@ __webpack_require__.r(__webpack_exports__);
       return today;
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    console.log(this.data.error);
+  }
 });
 
 /***/ }),
@@ -37937,7 +37939,8 @@ var render = function() {
                   name: "userUrl",
                   rows: "3",
                   required: "",
-                  readonly: _vm.data.shortLink != null
+                  readonly:
+                    _vm.data.shortLink !== null && _vm.data.error === null
                 },
                 domProps: { value: _vm.data.userLink }
               }),
