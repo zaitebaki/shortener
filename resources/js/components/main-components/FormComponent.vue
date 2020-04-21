@@ -71,7 +71,7 @@
               type="text"
               class="form-control"
               name="statisticLink"
-              value="http://poker.devmasta.ru.com/ghR45"
+              :value="data.statisticLink"
             >
           </div>
         </form>
@@ -103,13 +103,13 @@ export default {
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute('content'),
             disabledFn: {
-                customPredictor(date) {
-                    const today = new Date();
-                    today.setHours(0, 0, 0, 0);
-                    if (date < today) {
-                        return true;
-                    }
-                },
+                // customPredictor(date) {
+                //     const today = new Date();
+                //     today.setHours(0, 0, 0, 0);
+                //     if (date < today) {
+                //         return true;
+                //     }
+                // },
             },
             vmodelDate: null
         };

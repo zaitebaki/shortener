@@ -2009,15 +2009,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-      disabledFn: {
-        customPredictor: function customPredictor(date) {
-          var today = new Date();
-          today.setHours(0, 0, 0, 0);
-
-          if (date < today) {
-            return true;
-          }
-        }
+      disabledFn: {// customPredictor(date) {
+        //     const today = new Date();
+        //     today.setHours(0, 0, 0, 0);
+        //     if (date < today) {
+        //         return true;
+        //     }
+        // },
       },
       vmodelDate: null
     };
@@ -37818,9 +37816,9 @@ var render = function() {
                 attrs: {
                   id: "statisticLink",
                   type: "text",
-                  name: "statisticLink",
-                  value: "http://poker.devmasta.ru.com/ghR45"
-                }
+                  name: "statisticLink"
+                },
+                domProps: { value: _vm.data.statisticLink }
               })
             ])
           ]

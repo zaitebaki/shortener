@@ -14,10 +14,20 @@ class CreateTables extends Migration
     public function up()
     {
         Schema::create('urls', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->char('token', 5)->unique();
             $table->string('url');
             $table->date('lifetime')->nullable();
+        });
+
+        Schema::create('statistic', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('url_id')->unsigned();
+            $table->dateTime('date_time');
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('user_agent')->nullable();
+            $table->foreign('url_id')->references('id')->on('urls');
         });
     }
 

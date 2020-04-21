@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('/', 'IndexController@index')->name('indexPage');
 Route::post('/', 'IndexController@getShortLink')->name('getShortLink');
 Route::get('/{token}', 'IndexController@redirect')->name('redirect');
+Route::get('/{token}/statistic', 'StatisticController@getStatistic')->name('statistic');
