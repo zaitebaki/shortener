@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 class SuperController extends Controller
 {
     /**
-     * Имя шаблона макета
+     * Имя шаблона макета.
      * @var string
      */
     protected $layout;
@@ -33,7 +33,7 @@ class SuperController extends Controller
     }
 
     /**
-     * Сгенерировать вид
+     * Сгенерировать вид.
      * @return Illuminate\View\View
      */
     protected function renderOutput(): object

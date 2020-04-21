@@ -1,0 +1,32 @@
+{
+  "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+  },
+  "parserOptions": {
+      "parser": "babel-eslint"
+  },
+  "extends": [
+    // "wesbos",
+    "plugin:vue/recommended"
+  ],
+  // "overrides": [
+  //   {
+  //       "files": ["*.vue"],
+  //       "extends": [
+  //           "wesbos",
+  //           "plugin:vue/recommended"
+  //       ]
+  //   }
+  // ],
+  "rules": {
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+  },
+  "globals": {
+    "axios": "readonly",
+    "UIkit": "readonly",
+    "_": "readonly",
+    "Vue": "readonly"
+    }
+}
