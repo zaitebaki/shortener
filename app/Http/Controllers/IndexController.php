@@ -29,8 +29,24 @@ class IndexController extends SuperController
      */
     public function index(): object
     {
+        $this->propsData['userLink'] = null;
         $this->propsData['shortLink'] = null;
+        $this->propsData['statisticLink'] = null;
         $this->propsData['error'] = null;
+
+        if (session()->has('userLink')) {
+            $this->propsData['userLink'] = session()->get('userLink');
+        }
+        if (session()->has('shortLink')) {
+            $this->propsData['shortLink'] = session()->get('shortLink');
+        }
+        if (session()->has('statisticLink')) {
+            $this->propsData['statisticLink'] = session()->get('statisticLink');
+        }
+        if (session()->has('err')) {
+            $this->propsData['error'] = session()->get('err');
+        }
+
         return $this->renderOutput();
     }
 
@@ -60,21 +76,15 @@ class IndexController extends SuperController
             UrlHandler::saveUrl($userLink, $token, $date);
             $shortLink = env('APP_URL') . $token;
             $statisticLink = env('APP_URL') . $token . "/statistic";
-            $this->propsData['error'] = null;
+
+            session()->flash('userLink', $userLink);
+            session()->flash('shortLink', $shortLink);
+            session()->flash('statisticLink', $statisticLink);
         } else {
-            session(['err' => __('content.errors.mainPage.invalidUrl')]);
-            $this->propsData['error'] = __('content.mainPage.errors.invalidUrl');
+            $errorMessage = __('content.mainPage.errors.invalidUrl');
+            session()->flash('err', $errorMessage);
         }
-
-        session(['userLink', $userLink]);
-        session(['shortLink', $shortLink]);
-        session(['statisticLink', $statisticLink]);
-
-        $this->propsData['userLink'] = $userLink;
-        $this->propsData['shortLink'] = $shortLink;
-        $this->propsData['statisticLink'] = $statisticLink;
-
-        return $this->renderOutput();
+        return redirect('/');
     }
 
     /**
