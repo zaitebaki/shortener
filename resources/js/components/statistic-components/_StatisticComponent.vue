@@ -3,7 +3,10 @@
     <div class="py-4">
       <h3>
         {{ contentData.h3Caption }}
-        <span><a :href="propsData.currentLink">{{ propsData.currentLink }} </a></span>
+        <span><a
+          :href="propsData.currentLink"
+        >{{ propsData.currentLink }}
+        </a></span>
       </h3>
     </div>
     <div v-if="propsData.links === null">
@@ -51,21 +54,20 @@
 </template>
 
 <script>
-
 export default {
-  props: {
-    propsData: {
-      type: Object,
-      required: true,
+    props: {
+        propsData: {
+            type: Object,
+            required: true,
+        },
+        contentData: {
+            type: Object,
+            required: true,
+        },
     },
-    contentData: {
-      type: Object,
-      required: true,
+    mounted() {
+        console.log(this.propsData.links);
     },
-  },
-  mounted() {
-    console.log(this.propsData.links);
-  },
 };
 </script>
 <style></style>

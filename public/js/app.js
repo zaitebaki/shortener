@@ -2022,8 +2022,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2115,6 +2113,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -38045,7 +38046,7 @@ var render = function() {
         _vm._v("\n      " + _vm._s(_vm.contentData.h3Caption) + "\n      "),
         _c("span", [
           _c("a", { attrs: { href: _vm.propsData.currentLink } }, [
-            _vm._v(_vm._s(_vm.propsData.currentLink) + " ")
+            _vm._v(_vm._s(_vm.propsData.currentLink) + "\n      ")
           ])
         ])
       ])

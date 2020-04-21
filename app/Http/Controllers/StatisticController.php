@@ -14,9 +14,6 @@ class StatisticController extends SuperController
     {
         $this->title = __('content.statisticPage.title');
         $this->layout = "statistic";
-        // $this->propsData = [
-        //     'indexRoute' => route('getShortLink'),
-        // ];
     }
 
     /**

@@ -59,9 +59,7 @@
               readonly
             >
           </div>
-          <div
-            class="form-group"
-          >
+          <div class="form-group">
             <label for="urlInputTextarea">{{
               content.inputUrlCaption
             }}</label>
@@ -127,7 +125,7 @@ export default {
         },
         content: {
             type: Object,
-            required: true,
+            required: true
         },
     },
     data() {
@@ -144,7 +142,7 @@ export default {
                     }
                 },
             },
-            vmodelDate: null
+            vmodelDate: null,
         };
     },
     computed: {
@@ -154,7 +152,6 @@ export default {
             return today;
         },
     },
-    mounted() {
-    },
+    mounted() {},
 };
 </script>

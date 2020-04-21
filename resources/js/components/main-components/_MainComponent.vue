@@ -11,21 +11,20 @@
 import FormComponent from './FormComponent.vue';
 
 export default {
-  components: {
-    'form-component': FormComponent,
-  },
-  props: {
-    propsData: {
-      type: Object,
-      required: true,
+    components: {
+        'form-component': FormComponent,
     },
-    contentData: {
-      type: Object,
-      required: true,
+    props: {
+        propsData: {
+            type: Object,
+            required: true,
+        },
+        contentData: {
+            type: Object,
+            required: true,
+        },
     },
-  },
-  mounted() {
-  },
+    mounted() {},
 };
 </script>
 
