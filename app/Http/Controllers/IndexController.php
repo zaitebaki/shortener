@@ -71,7 +71,7 @@ class IndexController extends SuperController
         $statisticLink = '';
 
         // проверить url на валидность
-        if (UrlHandler::isValid($userLink)) {
+        if (is_string($userLink) && UrlHandler::isValid($userLink)) {
             $token = UrlHandler::getNewToken();
             UrlHandler::saveUrl($userLink, $token, $date);
             $shortLink = env('APP_URL') . $token;
