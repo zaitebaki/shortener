@@ -83,4 +83,10 @@ php artisan route:clear
 php artisan migrate
 `
 
+`
+php artisan db:seed
+`
+
 6. В настройках `Apache` указать точку входа папку `public`.
+
+7. Для запуска тестов используем команду `phpunit` или `vendor\bin\phpunit`.
