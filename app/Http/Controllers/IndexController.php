@@ -58,7 +58,6 @@ class IndexController extends SuperController
     public function getShortLink(Request $request): object
     {
         $data = $request->all();
-
         if (isset($data['newLink'])) {
             return redirect('/');
         }

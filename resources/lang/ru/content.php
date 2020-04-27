@@ -27,6 +27,31 @@ return [
         'dateCaption' => 'Дата и время (Гринвич)',
         'countryCaption' => 'Страна',
         'cityCaption' => 'Город',
-        'userAgentCaption' => 'Версия браузера и ОС'
+        'userAgentCaption' => 'Версия браузера и ОС',
+    ],
+
+    'testData' => [
+        'urls' => [
+            ['token' => '00000',
+                'url' => 'https://laravel.com/',
+                'lifetime' => null,
+            ],
+            ['token' => '11111',
+                'url' => 'https://laravel.com/',
+                'lifetime' => '2099.01.01',
+            ],
+            ['token' => '2222',
+                'url' => 'https://laravel.com/',
+                'lifetime' => '2020.01.01',
+            ],
+        ],
+        'statistic' => [
+            ['url_id' => 1,
+                'date_time' => now(),
+                'country' => 'Russia',
+                'city' => 'Voronezh',
+                'user_agent' => 'test server',
+            ],
+        ],
     ],
 ];
