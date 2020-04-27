@@ -38,6 +38,12 @@ class CreateTables extends Migration
      */
     public function down()
     {
+        Schema::table('statistic', function (Blueprint $table) {
+            $table->dropForeign('statistic_url_id_foreign');
+        });
+
         Schema::dropIfExists('urls');
+        Schema::dropIfExists('statistic');
+
     }
 }
