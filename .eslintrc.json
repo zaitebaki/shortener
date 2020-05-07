@@ -8,7 +8,7 @@
       "parser": "babel-eslint"
   },
   "extends": [
-    // "wesbos",
+    "wesbos",
     "plugin:vue/recommended"
   ],
   // "overrides": [
